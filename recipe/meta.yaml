@@ -1,4 +1,4 @@
-{% set version = '0.1.2' %}
+{% set version = "0.1.2.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/pak_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pak/pak_{{ version }}.tar.gz
-  sha256: 84d6de1ee12d285cd57c3f96cf96eb592eabf7a3e3a2a4d4bab0134ed0cb4817
+  sha256: 579bdd5833fff5cad320773c5b068456c9e943da3cc1080df59fc2598fe2a51f
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -77,15 +77,12 @@ test:
 
 about:
   home: https://pak.r-lib.org/
-  license: GPL-3
-  summary: The goal of 'pak' is to make package installation faster and more reliable. In particular,
-    it performs all HTTP operations in parallel, so metadata resolution and package
-    downloads are fast. Metadata and package files are cached on the local disk as well.
-    'pak' has a dependency solver, so it finds version conflicts before performing the
-    installation. This version of 'pak' supports CRAN, 'Bioconductor' and 'GitHub' packages
-    as well.
+  license: GPL-3.0-only
+  summary: The goal of 'pak' is to make package installation faster and more reliable. In particular, it performs all HTTP operations in parallel, so metadata resolution and package downloads are fast. Metadata and package files are cached on the local disk as well. 'pak' has a dependency solver, so it finds version conflicts
+    before performing the installation. This version of 'pak' supports CRAN, 'Bioconductor' and 'GitHub' packages as well.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
